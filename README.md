@@ -2,10 +2,13 @@
 
 ![Example Background](./example.png)
 
+
+**NOTE: YOU CAN RUN THIS WITH WALLPAPER ENGINE, HOWEVER YOU WILL NOT BE ABLE TO USE THE OPTIONS SPECIFIED IN THE CUSTOMISATION AND USAGE SECTION. (also i won't be documenting how to do so)**
+
 **Installation:**
 
-1. Download and install [Lively Wallpaper](https://www.rocksdanister.com/lively/)
-2. Download this repo as a zip file
+1. Download and install [Lively Wallpaper](https://www.rocksdanister.com/lively/) for free
+2. Download this repl as a zip file
 3. Find and unzip the file
 4. Open Lively Wallpaper
 5. Select 'Add Wallpaper'
