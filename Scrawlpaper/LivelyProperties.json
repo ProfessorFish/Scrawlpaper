@@ -1,0 +1,17 @@
+ {
+  "sELECTED_COLOUR": {
+    "text": "Brush Colour",
+    "type": "color",
+    "value": "#FFFFFF"
+  },
+   "bACKGROUND_IMAGE": {
+     "text": "Background URL",
+     "type":  "textbox",
+     "value": "https://th.bing.com/th/id/R.fd00ff6d71af9d9f1dd416ebdc797d34?rik=Ss3S%2b3%2fMU29eTQ&pid=ImgRaw&r=0"
+   },
+   "sET_BACKGROUND": {
+     "text": "Set Background",
+     "type": "button",
+     "value": "OK"
+   }
+}

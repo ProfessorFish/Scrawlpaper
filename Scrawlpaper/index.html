@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width">
+  
+  <title>Scrawlpaper</title>
+  
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <script
+      src="https://cdn.socket.io/4.5.3/socket.io.min.js"
+      integrity="sha384-WPFUvHkB1aHA5TDSZi6xtDgkF0wXJcIIxXhC6h8OT8EH3fC5PWro5pWJ1THjcfEi"
+      crossorigin="anonymous"
+    ></script>
+  
+</head>
+<script>
+  /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
+
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
+</script>
+
+<body onmousemove="updateCursor(event)">
+  <div id="mySidebar" class="sidebar" style="width: 0px;">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <button onclick="changeSetting(this)" id="PAUSE">PLAY/PAUSE</button><br>
+    <button onclick="changeSetting(this)" id="STEP">STEP (PAUSES AS WELL)</button><br>
+    <button onclick="changeSetting(this)" id="CLEAR">CLEAR BOARD</button><br>
+    <button onclick="changeSetting(this)" id="RANDOMISE">RANDOMISE BOARD</button><br>
+    <h>SIM SPEED</h>
+    <input type="text" id="GEN_RATE" name="GEN_RATE" value="50" onchange="changeSetting(this)"><br>
+    <h>LIVE COLOUR</h><br>
+    <input type="text" id="LIVE_COLOUR" name="LIVE_COLOUR" value="#00FF00" onchange="changeSetting(this)"><br>
+    <h>DEAD COLOUR</h><br>
+    <input type="text" id="DEAD_COLOUR" name="DEAD_COLOUR" value="#000000" onchange="changeSetting(this)"><br>
+  </div>
+  <canvas width="100vw" height="100vh" onclick="handleClick()"></canvas>
+  <script>
+    var mouseX;
+    var mouseY;
+    function updateCursor(event) {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+    }
+
+    function handleClick() {
+      /*let perBoxWidth = CANVAS.width / grid.length
+      let boxWidth = Math.floor(perBoxWidth);
+      let extraWidth = (perBoxWidth - boxWidth) * grid.length;
+  
+      let perBoxHeight = CANVAS.height / grid[0].length
+      let boxHeight = Math.floor(perBoxHeight);
+      let extraHeight = (perBoxHeight - boxHeight) * grid[0].length;
+
+      let overX = Math.floor((mouseX - (extraWidth / 2)) / boxWidth);
+      let overY = Math.floor((mouseY - (extraHeight / 2)) / boxHeight);*/
+
+      
+      if(!overX && grid[overX][overY] && grid[overX][overY] != '#00000000'){
+        selectedColour = grid[overX][overY];
+      } else if(grid[overX][overY] != selectedColour && grid[overX][overY]){
+        socket.emit('place', {x: overX, y: overY, colour: selectedColour})
+      }
+      /*grid[overX][overY] = grid[overX][overY] ? 0 : 1;
+      
+      if(!overX && !overY){
+	grid = Array.from(Array(100), () => new Array(100).fill(0));
+      for (var i in grid) {
+        for (var p in grid[i]) {
+          if (Math.random() >= 0.5) grid[i][p] = 1;
+        }
+      }
+      }*/
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>
